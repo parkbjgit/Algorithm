@@ -1,95 +1,95 @@
-# #fibinacci#
-# def fibo(x):
-#     if x==1 or x==2:
-#         return 1
-#     return fibo(x-1)+fibo(x-2)
+#fibinacci#
+def fibo(x):
+    if x==1 or x==2:
+        return 1
+    return fibo(x-1)+fibo(x-2)
 
-# print(fibo(4))
+print(fibo(4))
 
 
-# #topdown#
-# d=[0]*100
+#topdown#
+d=[0]*100
 
-# def fibo(x):
-#     if x==1 or x==2:
-#         return 1
+def fibo(x):
+    if x==1 or x==2:
+        return 1
     
-#     if d[x]!=0:
-#         return d[x]
+    if d[x]!=0:
+        return d[x]
     
-#     d[x]=fibo(x-1)+fibo(x-2)
-#     return d[x]
+    d[x]=fibo(x-1)+fibo(x-2)
+    return d[x]
 
-# print(fibo(99))
-
-
-# #bottomup#
-# d=[0]*100
-
-# d[1]=1
-# d[2]=1
-# n=99
-
-# for i in range(3,n+1):
-#     d[i]=d[i-1]+d[i-2]
-
-# print(d[n])
+print(fibo(99))
 
 
-# #개미 전사#
-# n=int(input())
-# array=list(map(int,input().split()))
+#bottomup#
+d=[0]*100
 
-# d=[0]*n
+d[1]=1
+d[2]=1
+n=99
 
-# d[0]=array[0]       #초기값
-# d[1]=max(array[0],array[1])  #i=1일때도 둘중에 더 큰값
+for i in range(3,n+1):
+    d[i]=d[i-1]+d[i-2]
 
-# for i in range(2,n):
-
-#     d[i]=max(d[i-1],d[i-2]+array[i])
-
-# print(d[n-1])
+print(d[n])
 
 
-# #1로 만들기-2,3,5 로 나누거나 1을 빼는 연산으로 연산횟수의 최소를 구함??????
-# #전에 했던 단순한 그리디 해법과는 다름- 1을 빼거나 2,3으로 나누는게 나을수도
-# x=int(input())
+#개미 전사#
+n=int(input())
+array=list(map(int,input().split()))
 
-# d=[0]*30001
+d=[0]*n
 
-# for i in range(2,x+1):
-#     d[i]=d[i-1]+1   #현재의 수에서 1을 빼는 경우
+d[0]=array[0]       #초기값
+d[1]=max(array[0],array[1])  #i=1일때도 둘중에 더 큰값
 
-#     if i%2==0:      #현재의 수가 2로 나누어 떨어질 경우
-#         d[i]=min*(d[i],d[i//2]+1)
-#     if i%3==0:
-#         d[i]=min*(d[i],d[i//3]+1)
-#     if i%5==0:
-#         d[i]=min*(d[i],d[i//5]+1)
-# print(d[x])
+for i in range(2,n):
+
+    d[i]=max(d[i-1],d[i-2]+array[i])
+
+print(d[n-1])
 
 
+#1로 만들기-2,3,5 로 나누거나 1을 빼는 연산으로 연산횟수의 최소를 구함??????
+#전에 했던 단순한 그리디 해법과는 다름- 1을 빼거나 2,3으로 나누는게 나을수도
+x=int(input())
 
-# #효율적인 화폐구성
-# n,m=map(int,input().split())    #n개의 화폐단위, m은 금액
+d=[0]*30001
 
-# array=[]
-# for i in range(n):
-#     array.append(int(input))        #화폐 입력
+for i in range(2,x+1):
+    d[i]=d[i-1]+1   #현재의 수에서 1을 빼는 경우
 
-# d=[10001]*(m+1)
+    if i%2==0:      #현재의 수가 2로 나누어 떨어질 경우
+        d[i]=min*(d[i],d[i//2]+1)
+    if i%3==0:
+        d[i]=min*(d[i],d[i//3]+1)
+    if i%5==0:
+        d[i]=min*(d[i],d[i//5]+1)
+print(d[x])
 
-# d[0]=0
-# for i in range(n):
-#     for j in range(array[i], m+1):  
-#         if d[j-array[i]]!=10001:       #(i-k)원을 만드는 방법이 존재
-#             d[j]=min(d[j], d[j-array[i]]+1) #동전개수 +1 하기
 
-# if d[m]==10001:
-#     print(-1)
-# else:
-#     print(d[m])
+
+#효율적인 화폐구성
+n,m=map(int,input().split())    #n개의 화폐단위, m은 금액
+
+array=[]
+for i in range(n):
+    array.append(int(input))        #화폐 입력
+
+d=[10001]*(m+1)
+
+d[0]=0
+for i in range(n):
+    for j in range(array[i], m+1):  
+        if d[j-array[i]]!=10001:       #(i-k)원을 만드는 방법이 존재
+            d[j]=min(d[j], d[j-array[i]]+1) #동전개수 +1 하기
+
+if d[m]==10001:
+    print(-1)
+else:
+    print(d[m])
 
 
 #금광캐기
