@@ -99,7 +99,7 @@ else:
 # 1
 # 2
 # n
-for tc in range(int(input())):
+for tc in range(int(input())):  #테스트케이스 개수
     n,m = map(int,input().split())
     array = list(map(int,input().split()))
 
@@ -111,7 +111,7 @@ for tc in range(int(input())):
         index+=m
     
 
-    for j in range(1,m):        #i->y j->x
+    for j in range(1,m):        #m부터 해야 오른쪽으로 가니까
         for i in range(n):
             #왼쪽위에서 옴
             if i==0: left_up=0
