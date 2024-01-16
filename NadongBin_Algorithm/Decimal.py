@@ -1,11 +1,10 @@
 #소수찾기-에라토스테네스의 체#
 import math
-n=1000  #1~1000까지
-
+n=1000
 array=[True for i in range(n+1)]        #1~1000까지 배열 True로 초기화
 
 #2부터 sqrt(n)까지 돌면서 배수들 제거
-#만약 i번재가 true 라면 j 초기화해서 배수들을 False로 바꿈(while ixj사용)
+#만약 i번째가 true 라면 j 초기화해서 배수들을 False로 바꿈(while ixj사용)
 for i in range(2,int(math.sqrt(n))+1):
     if array[i]==True:
         j=2
@@ -14,7 +13,7 @@ for i in range(2,int(math.sqrt(n))+1):
             j+=1    #이거 빼먹음####
 
 #array중에 true인 것만 리스트 출력
-for i in range(2,n+1):  #1은 당연히 소수가 아니고, n=1000이니까 n+1이지
+for i in range(2,n+1):  #1은 당연히 소수가 아니고, n=1000이니까 n+1
     if array[i]:
         print(i, end=' ')
 
